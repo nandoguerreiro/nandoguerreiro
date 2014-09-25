@@ -21,11 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  database: nandoguerreiro
-  username: ebroot
-  host: aat0d3cn9kmfe8.citwqaoaqkvr.us-west-2.rds.amazonaws.com
-  password: nandoguerreiromysql
-  port: 3306
-  pool: 5
-  timeout: 5000
+ <<: *default
+ database: <%= ENV[‘RDS_DB_NAME’] %>
+ username: <%= ENV[‘RDS_USERNAME’] %>
+ password: <%= ENV[‘RDS_PASSWORD’] %>
+ host: <%= ENV[‘RDS_HOSTNAME’] %>
+ port: <%= ENV[‘RDS_PORT’] %>
